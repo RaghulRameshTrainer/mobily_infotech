@@ -36,18 +36,43 @@ class Employee():
     def __len__(self):
         return len(self.fullname())
     #DUNDER METHOD
+class Project():
+    def project_info(self):
+        print(f"{self.fname} is working as python developer")
 
+    def appraisal(self):
+        self.salary=self.salary*2
 
-class Developer(Employee):
+class Developer(Employee,Project):
     def __init__(self,fname,lname,pay,tech):
         self.tech=tech
         super().__init__(fname,lname,pay)
+    # method overloading and overriding
 
+    def mymethod(self):
+        print("Mymethod has been called")
+
+    def mymethod(self,x):
+        print("Called with :", x)
+
+    def fullname(self,title):
+        return "{}.{} {}".format(title,self.fname,self.lname)
+
+    def appraisal(self):
+        #Project.appraisal(self)
+        super(Employee,self).appraisal()
 dev_1=Developer('Ramya','Rajesh',10000,'Java')
 dev_2=Developer('Siva','Murugan',20000,'CPP')
 
-print(dev_1.email, dev_1.tech)
-print(dev_2.email, dev_2.tech)
+print(dev_1.salary)
+dev_1.appraisal()
+print(dev_1.salary)
+# dev_1.project_info()
+# dev_2.project_info()
+# print(dev_1.fullname('Miss'))
+# print(dev_2.fullname('Mr'))
+# print(dev_1.email, dev_1.tech)
+# print(dev_2.email, dev_2.tech)
 # str1='Levin-Lenus-100000'
 # str2='Dinesh-Kumar-200000'
 #
